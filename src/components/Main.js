@@ -21,7 +21,6 @@ function Main(props) {
     }, []);
 
     return(
-        <>
             <main className="main" >
                 <section className="profile">
                     <div className="profile__edit-avatar" onClick={props.onEditAvatar} >
@@ -39,7 +38,6 @@ function Main(props) {
                   {cards.map((card) => <Card key={card._id} {...card} onCard={props.onCardClick} />)}
                 </section>
             </main>
-        </>
     );
 }
 

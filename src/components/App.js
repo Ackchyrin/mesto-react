@@ -6,11 +6,11 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 
 function App() {
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
-  const [isViewOpen, setViewOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({});
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isViewOpen, setViewOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   function closeAllPopups() {
     setEditProfilePopupOpen(false);
@@ -25,16 +25,16 @@ function App() {
   }
 
   return (
-   <>
-   <Header />
-   <Main 
-     onEditProfile={() => setEditProfilePopupOpen(true)}
-     onAddPlace={() => setAddPlacePopupOpen(true)}
-     onEditAvatar={() => setEditAvatarPopupOpen(true)}
-     onCardClick={(item) => handleCardClick(item)}
-   />
-   <Footer />
-   <PopupWithForm
+    <>
+      <Header />
+      <Main
+        onEditProfile={() => setEditProfilePopupOpen(true)}
+        onAddPlace={() => setAddPlacePopupOpen(true)}
+        onEditAvatar={() => setEditAvatarPopupOpen(true)}
+        onCardClick={(item) => handleCardClick(item)}
+      />
+      <Footer />
+      <PopupWithForm
         title='Редактировать профиль'
         name='edit'
         isOpen={isEditProfilePopupOpen}
@@ -118,12 +118,12 @@ function App() {
         title='Вы уверены?'
         name='delete'
         btnText='Да' />
-        <ImagePopup
+      <ImagePopup
         card={selectedCard}
         view={isViewOpen}
         onClose={closeAllPopups}
       />
-      </>
+    </>
   );
 }
 
