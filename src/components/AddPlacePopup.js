@@ -1,21 +1,30 @@
-import React, { useRef } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup(props){
-    const refInputName = useRef(null);
-    const refInputLink = useRef(null);
+  const [name, setName] = React.useState("");
+  const [link, setLink] = React.useState("");
 
-    function handleSubmit(e) {
-        e.preventDefault();
+  function handleTitleChange(e) {
+    setName(e.target.value);
+  }
 
-        const inputDataName = refInputName.current.value;
-        const inputDataLink = refInputLink.current.value;
+  function handleLinkChange(e) {
+    setLink(e.target.value);
+  }
 
-        props.onAddPlace({
-            name: inputDataName,
-            link: inputDataLink
-        });
-    }
+  React.useEffect(() => {
+    setName("");
+    setLink("");
+  }, [props.isOpen]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.onAddPlace({
+      name,
+      link: link,
+    });
+  }
 
     return(
         <PopupWithForm
@@ -36,7 +45,8 @@ function AddPlacePopup(props){
             placeholder="Название"
             minLength="2"
             maxLength="30"
-            ref={refInputName}
+            value={name || ""}
+            onChange={handleTitleChange}
             required
           />
           <span className="error" id="card-error"></span>
@@ -46,7 +56,8 @@ function AddPlacePopup(props){
             id="link"
             name="link"
             placeholder="Ссылка на картинку"
-            ref={refInputLink}
+            value={link || ""}
+            onChange={handleLinkChange}
             required
           />
           <span className="error error_second" id="link-error"></span>

@@ -81,11 +81,11 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Header />
       <Main
-         onEditProfile={() => setEditProfilePopupOpen(true)}
-         onAddPlace={() => setAddPlacePopupOpen(true)}
-         onEditAvatar={() => setEditAvatarPopupOpen(true)}
-         onCardClick={(item) => handleCardClick(item)}
-         cards={cards}
+        onEditProfile={() => setEditProfilePopupOpen(true)}
+        onAddPlace={() => setAddPlacePopupOpen(true)}
+        onEditAvatar={() => setEditAvatarPopupOpen(true)}
+        onCardClick={(item) => handleCardClick(item)}
+        cards={cards}
         onCardLike={(card) => handleCardLike(card)}
         onCardDelete={(card) => handleCardDelete(card)}
       />
